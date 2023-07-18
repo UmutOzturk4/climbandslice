@@ -1186,7 +1186,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918640235}
+        - m_Target: {fileID: 918640241}
           m_TargetAssemblyTypeName: Movement, Assembly-CSharp
           m_MethodName: Goleft
           m_Mode: 1
@@ -1202,7 +1202,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918640235}
+        - m_Target: {fileID: 918640241}
           m_TargetAssemblyTypeName: Movement, Assembly-CSharp
           m_MethodName: Stop
           m_Mode: 1
@@ -1422,7 +1422,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918640235}
+        - m_Target: {fileID: 918640241}
           m_TargetAssemblyTypeName: Movement, Assembly-CSharp
           m_MethodName: shield
           m_Mode: 1
@@ -1438,7 +1438,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918640235}
+        - m_Target: {fileID: 918640241}
           m_TargetAssemblyTypeName: Movement, Assembly-CSharp
           m_MethodName: shieldlower
           m_Mode: 1
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 918640235}
+      - m_Target: {fileID: 918640241}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: hit
         m_Mode: 1
@@ -2312,7 +2312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918640234}
-  - component: {fileID: 918640235}
+  - component: {fileID: 918640241}
   - component: {fileID: 918640236}
   - component: {fileID: 918640238}
   - component: {fileID: 918640239}
@@ -2331,40 +2331,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918640233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.500471, y: 10.747773, z: 6.532055}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15.500488, y: 10.747803, z: 6.532055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &918640235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918640233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb509b34806389488c732f30483c7c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char1: {fileID: 2160058743106633484, guid: 265f1ad216e02dd44bf1dc8c06386b08, type: 3}
-  char2: {fileID: 6189743573240089688, guid: e910624ed44a9ce4d8cd0200cd0404fb, type: 3}
-  player: {fileID: 0}
-  movementui: {fileID: 1393654686}
-  restartui: {fileID: 1622426473}
-  playerWeapon: {fileID: 0}
-  inAir: 0
-  canPass: 0
-  playerdead: 0
-  slider: {fileID: 0}
-  timer: {fileID: 0}
-  animator: {fileID: 0}
-  speed: 1
-  rb: {fileID: 0}
 --- !u!114 &918640236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2424,6 +2398,32 @@ MonoBehaviour:
   - {fileID: 5525295603368428666, guid: f6d4109da7a8fb14598e335baed19ec6, type: 3}
   - {fileID: 4545996795517209006, guid: a525964e6a1c67f41963089a35d091ab, type: 3}
   - {fileID: 6783042612740966625, guid: 7a4952846ba09894b99aeabfdafb8ec0, type: 3}
+--- !u!114 &918640241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918640233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb509b34806389488c732f30483c7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char1: {fileID: 2160058743106633484, guid: 265f1ad216e02dd44bf1dc8c06386b08, type: 3}
+  char2: {fileID: 0}
+  player: {fileID: 0}
+  movementui: {fileID: 1393654686}
+  restartui: {fileID: 1622426473}
+  playerWeapon: {fileID: 0}
+  inAir: 0
+  canPass: 0
+  playerdead: 0
+  slider: {fileID: 0}
+  timer: {fileID: 0}
+  animator: {fileID: 0}
+  speed: 1
+  rb: {fileID: 0}
 --- !u!1001 &1056597617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3246,7 +3246,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918640235}
+        - m_Target: {fileID: 918640241}
           m_TargetAssemblyTypeName: Movement, Assembly-CSharp
           m_MethodName: Goright
           m_Mode: 1
@@ -3262,7 +3262,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918640235}
+        - m_Target: {fileID: 918640241}
           m_TargetAssemblyTypeName: Movement, Assembly-CSharp
           m_MethodName: Stop
           m_Mode: 1
@@ -4611,7 +4611,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 918640235}
+      - m_Target: {fileID: 918640241}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: jump
         m_Mode: 1
