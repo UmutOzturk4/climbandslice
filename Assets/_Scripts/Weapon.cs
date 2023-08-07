@@ -16,10 +16,10 @@ public class Weapon : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            movement.hittaken();
-            hittaken = true;
             GetComponent<BoxCollider>().enabled = false;
-            Invoke("weaponcollider",1f);
+            movement.hittaken();
+            hittaken = true;     
+            Invoke("weaponcollider",3f);
         }
     }
     public void weaponcollider()

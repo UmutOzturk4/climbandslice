@@ -13,6 +13,7 @@ TagManager:
   - enemy
   - weapon1
   - enemySpawnPoint
+  - rage
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - floor
   - player
-  - 
+  - Post Procces Layer
   - 
   - 
   - 

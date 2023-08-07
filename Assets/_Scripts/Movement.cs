@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     GameObject scriptholder;
     Movement movement;
 
+    public GameObject FloatingHealth;
     public GameObject char1;
     public GameObject char2;
     public GameObject player;
@@ -21,12 +22,14 @@ public class Movement : MonoBehaviour
     public bool canPass;
     public bool playerdead;
 
+    public Slider secondSlider;
     public Slider slider;
     public Text timer;
     public Animator animator;
 
+    public int rage = 0;
     int playerHealth=100;
-    private int hitcount=1;
+    public int hitcount=1;
     private bool timerstart;
     
     private float time;
@@ -34,7 +37,7 @@ public class Movement : MonoBehaviour
     private float horizontalmvmt = 0;
     
     public Rigidbody rb;
-    Vector3 pos = new Vector3(-16, 0.90f, 0.3f);
+    Vector3 pos = new Vector3(-16, 0.90f, 0);
     void Start()
     {      
         player = Instantiate(char1, pos, Quaternion.Euler(0, 90, 0));
@@ -42,15 +45,17 @@ public class Movement : MonoBehaviour
         rb = player.GetComponent<Rigidbody>();
         animator = player.GetComponent<Animator>();
         playerfoot.AddComponent<Jump>();
-        scriptholder = GameObject.FindGameObjectWithTag("playerhealth");
-        slider =scriptholder.GetComponent<Slider>();
         playerWeapon = GameObject.FindGameObjectWithTag("playerweapon");
+        scriptholder = GameObject.FindGameObjectWithTag("playerhealth");
+        slider = scriptholder.GetComponent<Slider>();
+        secondSlider = GameObject.FindGameObjectWithTag("rage").GetComponent<Slider>();
+        
         playerdead = false;
     }
     void Update()
     {
         slider.value = playerHealth;
-        Input.GetAxis("Horizontal");
+        secondSlider.value = rage;
         if (time >= 1.5f)
         {
             timerstart = false;
@@ -63,15 +68,13 @@ public class Movement : MonoBehaviour
         }
         player.transform.Translate(0, 0, horizontalmvmt * Time.deltaTime);
         if (playerHealth<=0)
-        {
+        {         
             animator.Play("Death");
             playerdead = true;
+            player.GetComponent<BoxCollider>().enabled = false;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
             Invoke("afterdeath",4);
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
     }
     public void Goleft()
     {
@@ -116,24 +119,25 @@ public class Movement : MonoBehaviour
             timerstart = true;
             if (hitcount == 1)
             {
+                hitcount++;
                 animator.SetBool("hit1", true);
                 Invoke("hitstop", 1f);
-                hitcount++;
                 time = 0;
             }
             else if (hitcount == 2)
             {
+                hitcount++;
                 animator.SetBool("hit2", true);
                 Invoke("hitstop", 1f);
-                hitcount++;
                 time = 0;
             }
-            else if (hitcount == 3)
+            else if (hitcount == 3 && secondSlider.value>=50)
             {
+                hitcount = 1;
+                rage = 0;
                 animator.SetLayerWeight(1, 0);
                 animator.SetBool("hit3", true);
                 Invoke("hitstop", 1f);
-                hitcount = 1;
                 time = 0;
                 timerstart = false;
                 Invoke("fullcombohit", 1f);
@@ -144,6 +148,7 @@ public class Movement : MonoBehaviour
     {
         animator.SetBool("hit1", false);
         animator.SetBool("hit2", false);
+        playerWeapon.GetComponent<BoxCollider>().enabled = false;
         
     }
     public void shield()
@@ -171,14 +176,17 @@ public class Movement : MonoBehaviour
             if (animator.GetBool("block"))
             {
                 animator.SetBool("Blocked", true);
+                rage += 15;
                 Invoke("cancel", 0.3f);
                 // enemy stun
             }
             else if (!animator.GetBool("block"))
             {
                 playerHealth -= 30;
-                animator.SetBool("hittaken", true);
+                rage += 10;
+                animator.SetBool("hittaken", true);                
                 Invoke("cancel", 0.2f);
+                ShowDamage();
             }
         }
     }
@@ -189,7 +197,13 @@ public class Movement : MonoBehaviour
     }
     public void afterdeath()
     {
+        
         movementui.SetActive(false);
         restartui.SetActive(true);
+    }
+    public void ShowDamage()
+    {
+        var go = Instantiate(FloatingHealth,player.transform.position, Quaternion.identity);
+        go.GetComponent<TextMesh>().text = "-30";
     }
 }

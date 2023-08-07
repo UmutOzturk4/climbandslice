@@ -12,16 +12,16 @@ public class CameraControl : MonoBehaviour
         speed = 0.2f;
     }
     void Update()
-    {
-        if (!scriptholder.GetComponent<Movement>().playerdead)
-        {
-            transform.position += transform.up * speed * Time.deltaTime;
-        }          
-        timer -= Time.deltaTime;
-        if (timer < 0 && speed<0.5F)
-        {
-            timer = 8;
-            speed += 0.1f;
-        }
+    {      
+            if (!scriptholder.GetComponent<Movement>().playerdead && !scriptholder.GetComponent<restartControl>().gameEnded)
+            {
+                transform.position += transform.up * speed * Time.deltaTime;
+            }
+            timer -= Time.deltaTime;
+            if (timer < 0 && speed < 0.5F)
+            {
+                timer = 8;
+                speed += 0.1f;
+            }
     }
 }

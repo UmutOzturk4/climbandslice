@@ -12,18 +12,14 @@ public class Weapon1 : MonoBehaviour
         scriptholder = GameObject.FindGameObjectWithTag("GameController");
         movement = scriptholder.GetComponent<Movement>();
     }
-    void Update()
-    {       
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            GetComponent<BoxCollider>().enabled = false;
             movement.hittaken();
             hittaken = true;
-            GetComponent<BoxCollider>().enabled = false;
-            Invoke("weaponcollider",1f);
+            Invoke("weaponcollider",3f);
         }
     }
     public void weaponcollider()
