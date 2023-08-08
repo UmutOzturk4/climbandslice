@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
 
     public int rage = 0;
     int playerHealth=100;
-    public int hitcount=1;
+    public int hitcount=1,score;
     private bool timerstart;
     
     private float time;
@@ -177,6 +177,7 @@ public class Movement : MonoBehaviour
             {
                 animator.SetBool("Blocked", true);
                 rage += 15;
+                score += 50;
                 Invoke("cancel", 0.3f);
                 // enemy stun
             }

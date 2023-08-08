@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.LowLevel;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(this.gameObject);
+            movement.score += 10;
         }            
     }
     public void cancel()
@@ -78,8 +80,8 @@ public class Enemy : MonoBehaviour
             
             TakeDamage(movement.hitcount);
 
-            scriptholder.GetComponent<Movement>().rage += 15;
-            scriptholder.GetComponent<Movement>().playerWeapon.GetComponent<BoxCollider>().enabled=false;
+            movement.rage += 15;
+            movement.playerWeapon.GetComponent<BoxCollider>().enabled=false;
             if (FloatingHealth)
             {
                 ShowDamage();
@@ -91,14 +93,17 @@ public class Enemy : MonoBehaviour
         if (hit == 2)
         {
             damageTaken = 40;
+            movement.score += 80;
         }
         else if (hit == 3)
         {
             damageTaken = 60;
+            movement.score += 120;
         }
         else if (hit == 1)
         {
             damageTaken = 100;
+            movement.score += 200;
         }
         health -= damageTaken;
     }

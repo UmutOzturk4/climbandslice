@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
-    InstantiateFloor go;
-    Scene scene;
     public void Gamestart()
     {
         SceneManager.LoadScene("SampleScene");       

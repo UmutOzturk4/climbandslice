@@ -13,7 +13,7 @@ public class CameraControl : MonoBehaviour
     }
     void Update()
     {      
-            if (!scriptholder.GetComponent<Movement>().playerdead && !scriptholder.GetComponent<restartControl>().gameEnded)
+            if (!scriptholder.GetComponent<Movement>().playerdead && !scriptholder.GetComponent<nextLevelControl>().gameEnded)
             {
                 transform.position += transform.up * speed * Time.deltaTime;
             }

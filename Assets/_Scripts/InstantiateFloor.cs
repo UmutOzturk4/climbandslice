@@ -25,6 +25,7 @@ public class InstantiateFloor : MonoBehaviour
     int enemyeuler = 90;
     void Start()
     {
+        
         /* if (PlayerPrefs.GetInt("platformcount") == 0) 
          {
              PlayerPrefs.SetInt("platformcount",1);
@@ -48,8 +49,10 @@ public class InstantiateFloor : MonoBehaviour
             lastrandom = randomnmr;
         }
         instantieenemy();
-        
-        
+        if (levelCount % 10 == 0)
+        {
+            InstantiateBoss();
+        }
     }
     private void Update()
     {
@@ -72,5 +75,9 @@ public class InstantiateFloor : MonoBehaviour
                 GameObject enemy = Instantiate(enemies[0], spawnPointsinScene[i-1].transform.position + new Vector3(0, 0.5f, 0), Quaternion.Euler(0, enemyeuler, 0));              
             }
         }
+    }
+    public void InstantiateBoss()
+    {
+        Instantiate(floors[0], pos + increasePos, Quaternion.identity);
     }
 }
