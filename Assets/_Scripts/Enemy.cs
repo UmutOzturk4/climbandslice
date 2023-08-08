@@ -33,6 +33,15 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
+        Physics.IgnoreLayerCollision(9, 4, true);
+        if (movement.rb.velocity.y > 1)
+        {
+            Physics.IgnoreLayerCollision(9, 7, true);
+        }
+        else if (movement.rb.velocity.y < 1)
+        {
+            Physics.IgnoreLayerCollision(9, 7, false);
+        }
         slider.value = health;
         randomhit = "hit" + randomnmbr;
         Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
@@ -51,8 +60,8 @@ public class Enemy : MonoBehaviour
                 animator.SetBool(randomhit, true);
                 if (!invoked)
                 {
-                   Invoke("cancel", 1.5f);
-                   invoked = true;
+                    invoked = true;
+                    Invoke("cancel", 3f);
                 }                              
             }          
         }

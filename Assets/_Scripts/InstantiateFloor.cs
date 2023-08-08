@@ -26,10 +26,12 @@ public class InstantiateFloor : MonoBehaviour
     void Start()
     {
         
-        /* if (PlayerPrefs.GetInt("platformcount") == 0) 
+         if (PlayerPrefs.GetInt("platformcount") == 0) 
          {
              PlayerPrefs.SetInt("platformcount",1);
-         }*/
+            PlayerPrefs.SetInt("frequency", 4);
+
+         }
         frequency = PlayerPrefs.GetInt("frequency");
         platformcount = PlayerPrefs.GetInt("platformcount");
         levelCount = PlayerPrefs.GetInt("levelcount");
@@ -78,6 +80,6 @@ public class InstantiateFloor : MonoBehaviour
     }
     public void InstantiateBoss()
     {
-        Instantiate(floors[0], pos + increasePos, Quaternion.identity);
+        Instantiate(floors[0], pos + increasePos, Quaternion.Euler(90, 0, 0));
     }
 }
