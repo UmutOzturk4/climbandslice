@@ -1111,12 +1111,16 @@ PrefabInstance:
       value: playerweapon
       objectReference: {fileID: 0}
     - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
+      propertyPath: m_Size.x
+      value: 0.074
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
       propertyPath: m_Size.y
-      value: 0.7894696
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
       propertyPath: m_Size.z
-      value: 0.23684955
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
       propertyPath: m_Enabled
@@ -1124,15 +1128,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
       propertyPath: m_Center.x
-      value: 0.0000008671209
+      value: 0.0000032482849
       objectReference: {fileID: 0}
     - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
       propertyPath: m_Center.y
-      value: 0.52427256
+      value: 0.56092983
       objectReference: {fileID: 0}
     - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
       propertyPath: m_Center.z
-      value: 0.0061687944
+      value: 0.009697338
       objectReference: {fileID: 0}
     - target: {fileID: 7094992054671724059, guid: 364c3e43f29ccc6488d4a6f1ad098656, type: 3}
       propertyPath: m_IsTrigger

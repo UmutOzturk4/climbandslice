@@ -9,26 +9,27 @@ using UnityEngine.UI;
 
 public class InstantiateFloor : MonoBehaviour
 {
-    public Text text;
-
-    GameObject[] floorsInScene;
-    public GameObject[] floors;
-    int randomnmr, lastrandom = 0;
-    public int platformcount;
-    Vector3 pos = new Vector3(-14,0,0);
-    Vector3 increasePos = new Vector3(0, 2.5f, 0);
-    public GameObject[] enemies;
     GameObject[] spawnPointsinScene;
-    public int levelCount;
-    int enemycount;
+    public GameObject lastfloor;
+    public GameObject[] floors;
+    public GameObject[] enemies;
+    public GameObject boss;
+
+    int randomenemy;
+    public int platformcount;
     public int frequency;
+    public int levelCount;
+    int randomnmr, lastrandom = 0;
     int enemyeuler = 90;
+
+    Vector3 pos = new (-14,0,0);
+    Vector3 increasePos = new (0, 2.5f, 0);
+
     void Start()
     {
-        
-         if (PlayerPrefs.GetInt("platformcount") == 0) 
+        if (PlayerPrefs.GetInt("platformcount") == 0) 
          {
-             PlayerPrefs.SetInt("platformcount",1);
+            PlayerPrefs.SetInt("platformcount",1);
             PlayerPrefs.SetInt("frequency", 4);
 
          }
@@ -50,36 +51,30 @@ public class InstantiateFloor : MonoBehaviour
             }
             lastrandom = randomnmr;
         }
-        instantieenemy();
+        Instantieenemy();
         if (levelCount % 10 == 0)
         {
             InstantiateBoss();
         }
     }
-    private void Update()
+    public void Instantieenemy()
     {
-        //text.text = "" + PlayerPrefs.GetInt("levelcount") + "  " + levelCount + "          " + PlayerPrefs.GetInt("platformcount") + "         " + platformcount;
-       /* if (levelCount % 10 == 0 )
-        {
-            PlayerPrefs.SetInt("frequency",frequency);
-        }*/
-    }
-    public void instantieenemy()
-    {
+        randomenemy = Random.Range(0,2);
         spawnPointsinScene = GameObject.FindGameObjectsWithTag("enemySpawnPoint");
-        GameObject firstEnemy = Instantiate(enemies[0], spawnPointsinScene[0].transform.position + new Vector3(0, 0.5f, 0), Quaternion.Euler(0, enemyeuler, 0));
-        enemycount++;
+        GameObject firstEnemy = Instantiate(enemies[randomenemy], spawnPointsinScene[0].transform.position + new Vector3(0, 0.5f, 0), Quaternion.Euler(0, enemyeuler, 0));
         for (int i = spawnPointsinScene.Length; i > 0; i--)
         {
             if (i % frequency == 0)
             {
-                enemycount++;
-                GameObject enemy = Instantiate(enemies[0], spawnPointsinScene[i-1].transform.position + new Vector3(0, 0.5f, 0), Quaternion.Euler(0, enemyeuler, 0));              
+                GameObject enemy = Instantiate(enemies[randomenemy], spawnPointsinScene[i-1].transform.position + new Vector3(0, 0.5f, 0), Quaternion.Euler(0, enemyeuler, 0));              
+                randomenemy= Random.Range(0, 2);
             }
         }
     }
     public void InstantiateBoss()
     {
-        Instantiate(floors[0], pos + increasePos, Quaternion.Euler(90, 0, 0));
+        Instantiate(lastfloor, pos + increasePos + new Vector3(-3.5f,0,0), Quaternion.Euler(90, 0, 0));
+        GameObject enemy = Instantiate(boss, GameObject.FindGameObjectWithTag("lastfloor").transform.position + new Vector3(0, 0.5f, 0), Quaternion.Euler(0, enemyeuler, 0));
+        //Instantiate(boss, GameObject.FindGameObjectWithTag("mainfloor").transform.position, Quaternion.Euler(0, enemyeuler, 0)) ;
     }
 }

@@ -21,11 +21,13 @@ public class CameraControl : MonoBehaviour
             scriptholder.GetComponent<Movement>().afterdeath();
             scriptholder.GetComponent<Movement>().playerdead = true;
         }*/
+      //if (cam.transform.position.y>=GameObject.FindGameObjectWithTag("lastfloor").transform.position.y)
+        //{ }
       if (!scriptholder.GetComponent<Movement>().playerdead && !scriptholder.GetComponent<nextLevelControl>().gameEnded)
       {
-            transform.position += transform.up * speed * Time.deltaTime;
-            bottomBorder.transform.position += transform.up * speed * Time.deltaTime;
-            topBorder.transform.position += transform.up * speed * Time.deltaTime;
+            transform.position += speed * Time.deltaTime * transform.up;
+            bottomBorder.transform.position += speed * Time.deltaTime * transform.up;
+            topBorder.transform.position += speed * Time.deltaTime * transform.up;
         }
       timer -= Time.deltaTime;
       if (timer < 0 && speed < 0.5F)

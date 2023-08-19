@@ -21,7 +21,7 @@ public class Jump : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.tag.Equals("floor")|| other.gameObject.tag.Equals("mainfloor"))
+        if (other.gameObject.tag.Equals("floor")|| other.gameObject.tag.Equals("mainfloor") || other.gameObject.tag.Equals("lastfloor"))
         {
             movement.animator.SetBool("jump", false); 
         }

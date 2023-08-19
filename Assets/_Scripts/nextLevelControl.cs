@@ -25,8 +25,8 @@ public class nextLevelControl : MonoBehaviour
         enemiesInScene = GameObject.FindGameObjectsWithTag("enemy");
         if (enemiesInScene.Length == 0 && !invoked)
         {
-            invoked = true;
-            Invoke("Nextlevel", 1);
+            //invoked = true;
+            //Invoke("Nextlevel", 1);
         }
         leveltxt.text = "level " + PlayerPrefs.GetInt("levelcount");
         scoretxt.text = "score " + IF.GetComponentInParent<Movement>().score;

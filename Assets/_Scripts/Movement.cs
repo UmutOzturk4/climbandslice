@@ -37,7 +37,10 @@ public class Movement : MonoBehaviour
     private float horizontalmvmt = 0;
     
     public Rigidbody rb;
+
     Vector3 pos = new Vector3(-16, 0.90f, 0);
+    Vector3 bigCollider = new Vector3(0.26f,1.44f,0.89f);
+    Vector3 normalCollider = new Vector3(0.074f, 0.86f, 0.22f);
     void Start()
     {      
         player = Instantiate(char1, pos, Quaternion.Euler(0, 90, 0));
@@ -133,11 +136,12 @@ public class Movement : MonoBehaviour
             }
             else if (hitcount == 3 && secondSlider.value>=50)
             {
+                playerWeapon.GetComponent<BoxCollider>().size = bigCollider;
                 hitcount = 1;
                 rage = 0;
                 animator.SetLayerWeight(1, 0);
                 animator.SetBool("hit3", true);
-                Invoke("hitstop", 1f);
+                Invoke("hitstop", 3f);
                 time = 0;
                 timerstart = false;
                 Invoke("fullcombohit", 1f);
@@ -149,7 +153,8 @@ public class Movement : MonoBehaviour
         animator.SetBool("hit1", false);
         animator.SetBool("hit2", false);
         playerWeapon.GetComponent<BoxCollider>().enabled = false;
-        
+
+
     }
     public void shield()
     {
@@ -168,6 +173,7 @@ public class Movement : MonoBehaviour
     {
         animator.SetLayerWeight(1, 1);
         animator.SetBool("hit3", false);
+        playerWeapon.GetComponent<BoxCollider>().size = normalCollider;
     }
     public void hittaken()
     {
